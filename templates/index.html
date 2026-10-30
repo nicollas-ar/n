@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6ece0">
+  <title>Para você, com rosas 🌹</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<main class="app">
+
+  <!-- ===================== HOME ===================== -->
+  <section id="tab-home" class="tab active">
+    <header class="hero">
+      <p class="eyebrow">✦ um presente para você ✦</p>
+      <h1>Minha pequena rosa</h1>
+
+      <div class="photo-cluster">
+        <figure class="frame frame-saint left">
+          <img src="{{ url_for('static', filename='images/santa_teresinha_1.jpg') }}" alt="Santa Teresinha com rosas">
+        </figure>
+        <figure class="frame frame-main">
+          <img src="{{ url_for('static', filename='images/namorada.jpg') }}" alt="Foto especial">
+          <span class="rose-badge">🌹</span>
+        </figure>
+        <figure class="frame frame-saint right">
+          <img src="{{ url_for('static', filename='images/santa_teresinha_2.jpg') }}" alt="Santa Teresinha com a cruz e lírios">
+        </figure>
+      </div>
+
+      <div class="message card">
+        <p>
+          Eu sei o quanto Santa Teresinha é especial para o seu coração, e por isso fiz este cantinho
+          pensando em você. Aqui há um pouco de tudo o que ela te ensina: confiança, simplicidade e
+          amor nas pequenas coisas.
+        </p>
+        <p>
+          Você é, para mim, uma das rosas mais bonitas que Deus colocou no meu caminho. Que este
+          presente te faça sorrir e te aproxime ainda mais da sua pequena grande santa.
+        </p>
+        <p class="sign">Com todo o meu carinho ♡</p>
+      </div>
+
+      <blockquote class="quote card">
+        <span class="quote-mark">“</span>
+        <p>Depois da minha morte, farei cair uma chuva de rosas.</p>
+        <cite>— Santa Teresinha do Menino Jesus</cite>
+      </blockquote>
+
+      <div class="quick-links">
+        <button class="chip" data-go="quiz">🌹 Fazer o Quiz</button>
+        <button class="chip" data-go="curiosidade">✨ Curiosidade</button>
+        <button class="chip" data-go="historia">📖 Sua História</button>
+      </div>
+    </header>
+  </section>
+
+  <!-- ===================== QUIZ ===================== -->
+  <section id="tab-quiz" class="tab">
+    <h2 class="section-title">Quiz de Santa Teresinha</h2>
+    <p class="section-sub">Teste o que você sabe sobre a sua santa</p>
+
+    <div id="quiz-loading" class="card center">Carregando perguntas…</div>
+
+    <div id="quiz-start" class="card center hidden">
+      <div class="big-emoji">🌹</div>
+      <p>Cada partida sorteia <strong id="quiz-count">10</strong> perguntas.<br>
+         Banco com <strong id="quiz-total">0</strong> perguntas.</p>
+      <button class="btn" id="quiz-begin">Começar</button>
+    </div>
+
+    <div id="quiz-play" class="card hidden">
+      <div class="progress"><div class="progress-bar" id="quiz-bar"></div></div>
+      <p class="q-meta"><span id="quiz-num">1/10</span> <span id="quiz-score-live">Acertos: 0</span></p>
+      <h3 id="quiz-question" class="q-text"></h3>
+      <div id="quiz-options" class="options"></div>
+      <div id="quiz-feedback" class="feedback hidden"></div>
+      <button class="btn hidden" id="quiz-next">Próxima Pergunta</button>
+    </div>
+
+    <div id="quiz-end" class="card center hidden">
+      <div class="big-emoji" id="end-emoji">🌹</div>
+      <h3>Resultado final</h3>
+      <p class="score"><span id="end-score">0</span> / <span id="end-total">0</span></p>
+      <p id="end-msg" class="end-msg"></p>
+      <button class="btn" id="quiz-again">Jogar Novamente</button>
+    </div>
+  </section>
+
+  <!-- ===================== CURIOSIDADE ===================== -->
+  <section id="tab-curiosidade" class="tab">
+    <h2 class="section-title">Curiosidades</h2>
+    <p class="section-sub">Pequenos tesouros sobre Santa Teresinha</p>
+
+    <div class="card curio-card" id="curio-card">
+      <span class="curio-tag" id="curio-tag">Toque no botão</span>
+      <p class="curio-text" id="curio-text">Clique abaixo e descubra algo lindo sobre a vida da Pequena Flor. 🌹</p>
+    </div>
+
+    <button class="btn btn-big" id="curio-btn">✨ Gerar Curiosidade de Santa Teresinha</button>
+    <p class="hint" id="curio-count"></p>
+  </section>
+
+  <!-- ===================== HISTÓRIA ===================== -->
+  <section id="tab-historia" class="tab">
+    <h2 class="section-title">A História de Teresinha</h2>
+    <p class="section-sub">Toque em cada capítulo para ler</p>
+
+    <div class="accordion" id="accordion">
+
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">I</span>
+          <span class="acc-title">Infância e Família</span>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Maria Francisca Teresa Martin nasceu em 2 de janeiro de 1873, em Alençon, na França. Era a caçula de nove filhos de Luís e Zélia Martin, um casal profundamente cristão, canonizado em 2015.</p>
+          <p>Em 1877, aos 4 anos, perdeu a mãe, e a família se mudou para Lisieux. Sua irmã Paulina tornou-se uma "segunda mãe" para ela. Teresinha era sensível e chorava com facilidade, mas já amava rezar e falava com seriedade sobre o céu.</p>
+          <p>Seu pai a chamava de "minha pequena rainha". Foi em casa, entre carinho e fé, que cresceu a sua alma simples.</p>
+        </div></div>
+      </article>
+
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">II</span>
+          <span class="acc-title">Início da Vocação</span>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Quando Paulina entrou no Carmelo, em 1882, Teresinha sentiu um grande vazio e adoeceu gravemente. Ela contou que foi curada por um sorriso da Virgem Maria, vindo da estátua que ficava perto da sua cama.</p>
+          <p>No Natal de 1886 recebeu o que chamou de "graça de Natal": superou de vez a sensibilidade excessiva e sentiu nascer em si o desejo de salvar almas. Daquele dia em diante, sua vocação estava clara: ser carmelita.</p>
+        </div></div>
+      </article>
+
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">III</span>
+          <span class="acc-title">A Entrada no Carmelo</span>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Por ser muito jovem, Teresinha encontrou resistência. Em 1887, numa peregrinação a Roma, ela se atreveu a pedir ao Papa Leão XIII, diante de todos, permissão para entrar no Carmelo aos 15 anos.</p>
+          <p>A permissão veio, e em 9 de abril de 1888 ela entrou no Carmelo de Lisieux, onde já estavam suas irmãs Paulina e Maria. Tomou o nome de Irmã Teresa do Menino Jesus e da Sagrada Face.</p>
+          <p>Ali viveu escondida, em oração, trabalho simples e sacrifícios silenciosos, por menos de dez anos.</p>
+        </div></div>
+      </article>
+
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">IV</span>
+          <span class="acc-title">A Pequena Via</span>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Teresinha sentia-se pequena demais para os grandes caminhos de santidade. Então descobriu o seu: a "Pequena Via", um caminho de confiança, abandono nas mãos de Deus e amor nas pequenas coisas de cada dia.</p>
+          <p>Um sorriso, uma paciência, um serviço escondido: tudo, se feito com amor, tem valor diante de Deus. Ela se comparava a uma pequena flor que alegra o jardim de Jesus por ser exatamente o que Ele quis.</p>
+          <p>Por obediência às superioras, escreveu os manuscritos que viriam a formar "História de uma Alma".</p>
+        </div></div>
+      </article>
+
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-num">V</span>
+          <span class="acc-title">Legado e Canonização</span>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-body"><div class="acc-inner">
+          <p>Em 1896, Teresinha começou a sofrer de tuberculose. Enfrentou a doença, e também uma longa noite de fé, com serenidade e confiança. Morreu em 30 de setembro de 1897, aos 24 anos, dizendo: "Meu Deus, eu vos amo!"</p>
+          <p>Depois de sua morte, "História de uma Alma" foi publicado e conquistou o mundo. Foi canonizada em 1925 por Pio XI, proclamada Padroeira Universal das Missões em 1927 e Doutora da Igreja por João Paulo II em 1997.</p>
+          <p>Até hoje, muitos devotos recebem rosas como sinal de sua intercessão. A chuva de rosas prometida continua. 🌹</p>
+        </div></div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== NAVEGAÇÃO ===================== -->
+<nav class="bottom-nav" aria-label="Navegação principal">
+  <button class="nav-btn active" data-tab="home"><span class="ni">🏡</span><span>Início</span></button>
+  <button class="nav-btn" data-tab="quiz"><span class="ni">🌹</span><span>Quiz</span></button>
+  <button class="nav-btn" data-tab="curiosidade"><span class="ni">✨</span><span>Curiosidade</span></button>
+  <button class="nav-btn" data-tab="historia"><span class="ni">📖</span><span>História</span></button>
+</nav>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
